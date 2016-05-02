@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
-import  { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { LOCATION_CHANGE, syncHistoryWithStore } from 'react-router-redux'
 import { combineReducers } from 'redux-immutable';

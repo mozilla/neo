@@ -4,8 +4,7 @@ Neo by Taskcluster is a boilerplate for generating static front-end sites powere
 
 Tools used in this project:
 
-- React
-- Redux, redux-router
+- React, Redux, react-router
 - Immutable
 - Bootstrap 4
 - Node.js v6
