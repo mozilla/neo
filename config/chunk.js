@@ -1,4 +1,6 @@
-const { CommonsChunkPlugin } = require('webpack').optimize;
+'use strict';
+
+const CommonsChunkPlugin = require('webpack').optimize.CommonsChunkPlugin;
 
 module.exports = new CommonsChunkPlugin({
   name: 'vendor',

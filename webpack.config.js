@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const bootstrap = require('./config/bootstrap');
 const clean = require('./config/clean');
@@ -15,7 +17,8 @@ const IS_PROD = process.env.npm_lifecycle_event === 'build';
 let plugins = [chunk, define];
 
 if (IS_PROD) {
-  plugins.push(...[clean, uglify])
+  plugins.push(clean);
+  plugins.push(uglify)
 }
 
 module.exports = {

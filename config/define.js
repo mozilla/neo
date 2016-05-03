@@ -1,4 +1,6 @@
-const { DefinePlugin } = require('webpack');
+'use strict';
+
+const DefinePlugin = require('webpack').DefinePlugin;
 
 module.exports = new DefinePlugin({
   'process.env': {

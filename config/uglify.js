@@ -1,4 +1,6 @@
-const { UglifyJsPlugin } = require('webpack').optimize;
+'use strict';
+
+const UglifyJsPlugin = require('webpack').optimize.UglifyJsPlugin;
 
 module.exports = new UglifyJsPlugin({
   compress: { warnings: false },
