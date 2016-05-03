@@ -1,8 +1,10 @@
+'use strict';
+
 const merge = require('webpack-merge');
 const webpackConfig = require('./webpack.config');
 const js = require('./config/js');
 const json =  require('./config/json');
-const package = require('./config/package');
+const pkg = require('./config/package');
 const istanbul =  require('./config/istanbul');
 
 delete webpackConfig.plugins;
@@ -21,7 +23,7 @@ module.exports = config => {
     },
     reporters: ['mocha', 'coverage'],
     webpack: merge(webpackConfig, {
-      plugins: [package],
+      plugins: [pkg],
       devtool: 'inline-source-map',
       // https://github.com/airbnb/enzyme/issues/47#issuecomment-207498885
       externals: {
