@@ -7,12 +7,18 @@ const json =  require('./config/json');
 const pkg = require('./config/package');
 const istanbul =  require('./config/istanbul');
 
-delete webpackConfig.plugins;
-
 module.exports = config => {
+  delete webpackConfig.plugins;
+
   config.set({
     basePath: __dirname,
-    browsers: ['PhantomJS'],
+    browsers: [process.env.CI ? 'ChromeCI' : 'Chrome'],
+    customLaunchers: {
+      ChromeCI: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     singleRun: true,
     frameworks: ['mocha'],
     files: [
@@ -36,11 +42,6 @@ module.exports = config => {
         postLoaders: [istanbul]
       }
     }),
-    phantomjsLauncher: {
-      // Have PhantomJS exit if a ResourceError is encountered,
-      // useful if karma exits without killing phantom
-      exitOnResourceError: true
-    },
     webpackMiddleware: {
       // Don't spam the console when running in karma
       noInfo: true
