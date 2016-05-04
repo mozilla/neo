@@ -35,7 +35,7 @@ module.exports = {
   },
   plugins,
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.json']
   },
   devServer: {
     contentBase: SRC,
