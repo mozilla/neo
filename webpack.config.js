@@ -1,8 +1,14 @@
 'use strict';
 
-const merge = require('webpack-merge');
 const webpackConfig = require('./config/webpack');
 
-module.exports = merge(webpackConfig(__dirname), {
+module.exports = webpackConfig(
+  __dirname,
+  // html config
+  { title: 'some app'
+  },
+
   // .. custom webpack configuration
-});
+  {}
+
+);

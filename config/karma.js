@@ -1,28 +1,31 @@
 'use strict';
 
+const deepmerge = require('deepmerge');
 const merge = require('webpack-merge');
-const js = require('./js');
-const json =  require('./json');
-const pkg = require('./package');
-const istanbul =  require('./istanbul');
+const webpack = require('webpack');
 
-module.exports = (webpackConfig, rootpath) => {
+module.exports = (webpackConfig, extraConfig) => {
+  webpackConfig = webpackConfig || {};
+  extraConfig = extraConfig || {};
+
   delete webpackConfig.plugins;
 
-  return {
-    basePath: rootpath,
+  return deepmerge(extraConfig, {
     browsers: ['PhantomJS'],
     singleRun: true,
     frameworks: ['mocha'],
-    files: [
-      'tests/*_test.js'
-    ],
-    preprocessors: {
-      'tests/*_test.js': ['webpack', 'sourcemap']
-    },
+    files: [ 'tests/*_test.js' ],
+    preprocessors: { 'tests/*_test.js': ['webpack', 'sourcemap'] },
     reporters: ['mocha', 'coverage'],
     webpack: merge(webpackConfig, {
-      plugins: [pkg],
+      plugins: [
+        // https://github.com/cheeriojs/cheerio/issues/836#issuecomment-205158236
+        new webpack.NormalModuleReplacementPlugin(/^\.\/package$/, result => {
+          if (/cheerio/.test(result.context)) {
+            result.request = './package.json';
+          }
+        })
+      ],
       devtool: 'inline-source-map',
       // https://github.com/airbnb/enzyme/issues/47#issuecomment-207498885
       externals: {
@@ -31,8 +34,17 @@ module.exports = (webpackConfig, rootpath) => {
         'react/lib/ReactContext': 'window'
       },
       module: {
-        loaders: [js, json],
-        postLoaders: [istanbul]
+        loaders: [
+          { test: /\.json$/,
+            loader: "json" 
+          }
+        ],
+        postLoaders: [
+          { test: /\.js$/,
+            exclude: /(tests|node_modules)\//,
+            loader: 'istanbul-instrumenter'
+          }
+        ]
       }
     }),
     phantomjsLauncher: {
@@ -52,5 +64,6 @@ module.exports = (webpackConfig, rootpath) => {
         { type: 'cobertura', subdir: '.', file: 'cobertura.txt'}
       ]
     }
-  };
+  });
+
 };
