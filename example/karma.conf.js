@@ -1,6 +1,6 @@
 'use strict';
 
-const karmaConfig = require('./config/karma');
+const karmaConfig = require('neo/karma');
 const webpackConfig = require('./webpack.config');
 
 module.exports = config => {

@@ -1,6 +1,6 @@
 'use strict';
 
-const webpackConfig = require('./config/webpack');
+const webpackConfig = require('neo/webpack');
 
 module.exports = webpackConfig(
   __dirname,

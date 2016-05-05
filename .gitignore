@@ -34,3 +34,7 @@ bower_components
 
 # Optional REPL history
 .node_repl_history
+
+# example packae 
+example/build
+example/node_modules

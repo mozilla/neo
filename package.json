@@ -3,10 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "description": "Taskcluster frontend starter",
-  "main": "src/index.js",
+  "main": "app.js",
   "config": {
     "ghooks": {
-      "pre-commit": "npm run test"
+      "pre-commit": "echo 'no tests'"
     }
   },
   "scripts": {

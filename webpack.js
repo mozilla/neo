@@ -68,7 +68,7 @@ module.exports = (dirname, htmlConfig, extraConfig) => {
             name: '[name].[ext]'
           }
         },
-        { test: /\.css$/,
+        { test: /\.scss$/,
           loaders: ['style', 'css', 'sass']
         },
         { test: /\.jsx?$/,
