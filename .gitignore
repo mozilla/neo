@@ -38,3 +38,6 @@ bower_components
 # example packae 
 example/build
 example/node_modules
+
+# we dont want to commit compiled code
+compiled-app.js
