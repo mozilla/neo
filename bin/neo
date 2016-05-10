@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const Vorpal = require('vorpal');
+const yeoman = require('yeoman-environment');
+const { commands } = require('../package.json');
+
+let cli = new Vorpal();
+let env = yeoman.createEnv();
+let register = (command) => {
+  let {
+    name,
+    generator,
+    options = []
+  } = command;
+  let dir = path.resolve(__dirname, `../commands/${name}`);
+
+  if (generator) {
+    env.register(require.resolve(dir), `neo:${name}`);
+  }
+
+  let cliCommand = cli.command(name, command.description);
+
+  Object
+    .keys(options)
+    .map(option => {
+      let desc = options[option];
+      cliCommand.option(option, desc);
+    });
+
+  cliCommand
+    .action((args, done) => {
+      process.env.NODE_ENV = command.environment || 'development';
+
+      if (generator) {
+        env.run(`neo:${name}`, done)
+      } else {
+        require(dir)(args, done);
+      }
+    });
+};
+
+commands.map(register);
+
+cli
+  .find('exit')
+  .hidden();
+
+cli.parse(process.argv[2] ? process.argv : [...process.argv, 'help']);
