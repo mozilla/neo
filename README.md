@@ -1,83 +1,47 @@
-# Taskcluster Neo
+# Neo
+## Scaffold out a React-based front-end application
 
-Neo by Taskcluster is a boilerplate for generating static front-end sites powered by React.
+### Install
 
-Tools used in this project:
+```sh
+npm install -g generator-mozilla-neo
+```
 
-- React, Redux, react-router
-- Immutable
-- Bootstrap 4
-- Node.js v6
-- ES2015 + modules, Babel + Stage 0
-- ESLint
+### Features
+
+- React, Redux, React Router
 - Webpack
-- Karma + mocha + chai + enzyme + PhantomJS
+- ESLint, Babel, ES2015 + modules, Stage 0 preset
+- Tests and coverage with Karma, Mocha, Chai, Enzyme, and Chrome
+- Node.js v6
+- Bootstrap 4 and Sass
+- Travis CI
+- Immutable
 
-## Getting started
+### Usage
+> You need [Yeoman](http://yeoman.io/) to run this command.
+> Install it with `npm install -g yo`
 
-1. Fork and clone this repository
-2. Install dependencies: `npm install`
-3. Make changes as your project dictates, contained within `src` directory
+```
+yo mozilla-neo
 
-## Commands
+→ create package.json
+→ create README.md
+→ create LICENSE
+→ create src/
+→ create tests/
+→ create .gitignore
+→ create .travis.yml
+→ create .eslintrc
+→ create karma.conf.js
+→ create karma.js
+→ create webpack.js
+→ create webpack.config.js
+```
 
-`npm start`
+### Workflow
 
-> Run development instance of application on default port 4000 via
-> `webpack-dev-server`, with hot reloading of code via react-hot-loader.
-
-`npm run lint`
-
-> By default lints code in `src` directory using ESLint.
-
-`npm run build`
-
-> Build production-ready static files into a `build` directory.
-
-`npm test`
-
-> Run once all the tests for the project in the `test` directory, as well as
-> generation of coverage reports in the `coverage` directory.
-
-`npm run test:dev`
-
-> Starts a PhantomJS instance that watches for code changes and continuously
-> re-runs tests.
-
-`npm run gatekeeper`
-
-> Execute the `lint` and `test` script targets to ensure code is linted and
-> passing tests before landing.
-
-## Configuration
-
-This project does not use any external Node.js building tools, e.g. Grunt, gulp,
-instead relying on npm scripts. The build process is managed via `webpack` and
-different webpack loaders. Webpack is used here because it also provides nice
-development environment with hot code reloading. Configuration for development,
-testing, and production can be found in:
-
-- `.babelrc`: JS/ES code transpilation configuration
-- `.eslintrc`: Static linting enforcement configuration
-- `karma.conf.js`: Testing and code coverage configuration
-- `webpack.config.js`: General building configuration, along with plugins in the `config` directory
-
-## Testing
-
-The karma test runner is used in combination with mocha and chai. It uses
-webpack's configuration to apply Babel transforms, external testing
-environments, and code coverage reports. All tests are location in the `test`
-directory, and upon running `npm test` will generate code coverage reports in
-the `coverage` directory.
-
-## References
-
-- [Webpack](https://webpack.github.io/)
-- [Webpack Dev Server](https://webpack.github.io/docs/webpack-dev-server.html)
-- [React Hot Loader](https://github.com/gaearon/react-hot-loader)
-- [Karma](https://karma-runner.github.io)
-- [Enzyme](http://airbnb.io/enzyme/)
-- [Mocha](http://mochajs.org/)
-- [Chai](http://chaijs.com/)
-- [ESLint](http://eslint.org/)
-- [Babel](http://babeljs.io/)
+- Add code to `src/` and tests to `tests/`.
+- Lint, build, and test a project with `npm run build`.
+- Build and watch changes in `src/` with `npm start`.
+- Run only tests with `npm test`.
