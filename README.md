@@ -1,6 +1,6 @@
 # Neo
 
-Scaffold out a React-based front-end application
+Scaffold out a React-based front-end application with initial zero configuration
 
 ## Features
 
@@ -36,18 +36,16 @@ npm install mozilla-neo
 node_modules/.bin/neo init # and follow the prompts
 ```
 
+##### Sample output
+
 ```bash
-# Sample output
 → create package.json
-→ create README.md
-→ create LICENSE
 → create src/
 → create tests/
 → create .gitignore
 → create .travis.yml
-→ create .eslintrc
-→ create karma.conf.js
-→ create webpack.config.js
+→ create LICENSE
+→ create README.md
 ```
 
 #### Workflow
