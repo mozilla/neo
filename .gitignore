@@ -17,7 +17,7 @@ lib-cov
 .lock-wscript
 
 # build directory
-build
+/build
 
 # Dependency directories
 node_modules
