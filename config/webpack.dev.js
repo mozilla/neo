@@ -21,10 +21,17 @@ module.exports = merge(core, {
     }
   },
   devServer: {
-    // Display only errors to reduce the amount of output.
-    stats: 'errors-only',
+    contentBase: path.join(process.cwd(), 'src'),
+
+    // Enable history API fallback so HTML5 History API based
+    // routing works. This is a good default that will come
+    // in handy in more complicated setups.
+    historyApiFallback: true,
+
     hot: true,
     progress: true,
-    contentBase: path.join(process.cwd(), 'src')
+
+    // Display only errors to reduce the amount of output.
+    stats: 'errors-only'
   }
 });
