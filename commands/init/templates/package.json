@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "<%= data.description %>",
   "license": "MPL-2.0",
-  "entry": "index.js",
   "config": {
+    "entry": "src/entry.js",
     "ghooks": {
       "pre-commit": "npm test"
     },

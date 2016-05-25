@@ -20,7 +20,7 @@ let DevTools = IS_PROD ? NOOP : createDevTools(
     toggleVisibilityKey="ctrl-h"
     changePositionKey="ctrl-q"
     changeMonitorKey="ctrl-m"
-    defaultVisible="true">
+    defaultVisible="false">
       <LogMonitor />
       <SliderMonitor />
       <ChartMonitor />
@@ -32,26 +32,24 @@ let devtoolsStore = IS_PROD ? undefined : compose(
   persistState(location.href.match(/[?&]debug_session=([^&]+)\b/))
 );
 
-export const create = (reducers = {}, initialState = {}) => {
+export default ({ reducers = {}, initialState = {}, routes = [], Layout = NOOP }) => {
   const frozen = Immutable.fromJS(initialState);
   const routing = (state = frozen, action) => {
     return action.type === LOCATION_CHANGE ?
       state.merge({ locationBeforeTransitions: action.payload }) :
       state;
   };
+
   const store = createStore(
     combineReducers({ ...reducers, routing }),
     frozen,
     devtoolsStore
   );
+
   const history = syncHistoryWithStore(browserHistory, store, {
-    selectLocationState: state => state.get('routing').toJS()
+    selectLocationState: state => state.has('routing') ? state.get('routing').toJS() : null
   });
 
-  return { store, history };
-};
-
-export const render = (app, Layout, routes, rootElement = document.getElementById('root')) => {
   const LayoutWrapper = (props) => (
     <div id="wrapper">
       <Layout {...props} />
@@ -59,14 +57,20 @@ export const render = (app, Layout, routes, rootElement = document.getElementByI
     </div>
   );
 
-  ReactDOM.render(
-    <Provider store={app.store}>
-      <Router history={app.history}>
-        <Route component={LayoutWrapper}>
-          {routes.map(route => <Route key={route.path} path={route.path} component={route.component} />)}
-        </Route>
-      </Router>
-    </Provider>,
-    rootElement
-  );
+  return {
+    store,
+    history,
+    render(rootElement = document.getElementById('root')) {
+      ReactDOM.render(
+        <Provider store={store}>
+          <Router history={history}>
+            <Route component={LayoutWrapper}>
+              {routes.map(route => <Route key={route.path} path={route.path} component={route.component} />)}
+            </Route>
+          </Router>
+        </Provider>,
+        rootElement
+      );
+    }
+  };
 };

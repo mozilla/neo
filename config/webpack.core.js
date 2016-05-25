@@ -11,7 +11,8 @@ const CWD_NODE_MODULES = path.join(CWD, 'node_modules');
 const ENV = process.env.NODE_ENV;
 const NODE_MODULES = path.join(__dirname, '../node_modules');
 const PACKAGE = require(path.join(CWD, 'package.json'));
-const SRC = path.join(CWD, 'src');
+const SRC_FILE = path.join(CWD, PACKAGE.config.entry || 'src/entry.js');
+const SRC = path.dirname(SRC_FILE);
 const TESTS = path.join(CWD, 'tests');
 const USER_TEMPLATE = path.join(SRC, 'template.ejs');
 
@@ -21,7 +22,7 @@ let loader = name => `${name}?${qs.stringify(require(`.\/${name}`), {
 })}`;
 
 module.exports = {
-  entry: [SRC],
+  entry: [SRC_FILE],
   output: {
     path: BUILD,
     filename: 'bundle.js'
