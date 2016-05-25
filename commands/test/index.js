@@ -6,8 +6,8 @@ module.exports = (args) => {
     configFile: args.options.config ?
       path.resolve(process.cwd(), args.options.config) :
       path.join(__dirname, 'karma.conf.js'),
-    singleRun: true,
-    autoWatch: false
+    singleRun: !args.options.watch,
+    autoWatch: args.options.watch
   }, () => process.exit(0))
   .start();
 };
