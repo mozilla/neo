@@ -37,8 +37,8 @@
       "name": "start",
       "description": "Start a webpack development server",
       "options": {
-        "--port <port>": "Specify to port on which to start the development server",
-        "--config <file>": "Specify an alternate webpack configuration to use"
+        "--port [port]": ["Specify to port on which to start the development server", 4000],
+        "--config [file]": "Specify an alternate webpack configuration to use"
       }
     },
     {
@@ -46,7 +46,7 @@
       "description": "Render the application to static assets",
       "environment": "production",
       "options": {
-        "--config <file>": "Specify an alternate webpack configuration to use"
+        "--config [file]": "Specify an alternate webpack configuration to use"
       }
     },
     {
@@ -54,7 +54,7 @@
       "description": "Run the project's tests and generate coverage reports",
       "environment": "test",
       "options": {
-        "--config <file>": "Specify an alternate karma configuration to use"
+        "--config [file]": "Specify an alternate karma configuration to use"
       }
     }
   ],
@@ -121,7 +121,7 @@
     "sass-loader": "3.2.0",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
-    "vorpal": "1.10.10",
+    "vorpal": "1.4.1",
     "webpack": "1.13.0",
     "webpack-dev-server": "1.14.1",
     "webpack-hot-middleware": "2.10.0",

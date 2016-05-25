@@ -24,12 +24,26 @@ let register = (command) => {
   Object
     .keys(options)
     .map(option => {
-      let desc = options[option];
-      cliCommand.option(option, desc);
+      if (Array.isArray(options[option])) {
+        cliCommand.option(option, ...options[option]);
+      } else {
+        cliCommand.option(option, options[option]);
+      }
     });
 
   cliCommand
-    .action((args, done) => {
+    .action(function(args, done) {
+      if (this.commandObject._events) {
+        let options = Object
+          .keys(this.commandObject._events)
+          .reduce((base, key) => {
+            base[key] = this.commandObject[key];
+            return base;
+          }, {});
+
+        args.options = Object.assign(options, args.options);
+      }
+
       process.env.NODE_ENV = command.environment || 'development';
 
       if (generator) {
