@@ -54,7 +54,8 @@
       "description": "Run the project's tests and generate coverage reports",
       "environment": "test",
       "options": {
-        "--config [file]": "Specify an alternate karma configuration to use"
+        "--config <file>": "Specify an alternate karma configuration to use",
+        "--watch": "Keep browser waiting for test re-runs and watch for file changes."
       }
     }
   ],
