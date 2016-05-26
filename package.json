@@ -17,8 +17,9 @@
     "neo": "./bin/neo"
   },
   "scripts": {
+    "build": "mkdir -p build && babel src/app.js --source-maps inline -o build/app.js && cp src/template.ejs build",
     "prepublish": "npm run build",
-    "build": "mkdir -p build && babel src/app.js --source-maps inline -o build/app.js && cp src/template.ejs build"
+    "test": "npm explore $(node fixture) -- 'npm install && npm test'"
   },
   "babel": {
     "presets": [
@@ -54,7 +55,7 @@
       "description": "Run the project's tests and generate coverage reports",
       "environment": "test",
       "options": {
-        "--config <file>": "Specify an alternate karma configuration to use",
+        "--config [file]": "Specify an alternate karma configuration to use",
         "--watch": "Keep browser waiting for test re-runs and watch for file changes."
       }
     }
@@ -131,7 +132,8 @@
     "yeoman-generator": "0.23.3"
   },
   "devDependencies": {
-    "babel-cli": "6.8.0"
+    "babel-cli": "6.8.0",
+    "yeoman-test": "1.4.0"
   },
   "bugs": {
     "url": "https://github.com/taskcluster/neo/issues"
