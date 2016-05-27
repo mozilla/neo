@@ -17,10 +17,6 @@ module.exports = (args, done) => {
   let compiler = webpack(config);
   let server = new DevServer(compiler, config.devServer);
 
+  process.on('SIGINT', done);
   server.listen(port, 'localhost', () => console.log(`Listening on http://localhost:${port}`));
-
-  process.on('SIGINT', () => {
-    server.close();
-    done();
-  });
 };

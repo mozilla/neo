@@ -1,13 +1,13 @@
 const path = require('path');
 const { Server } = require('karma');
 
-module.exports = (args) => {
+module.exports = (args, done) => {
   new Server({
     configFile: args.options.config ?
       path.resolve(process.cwd(), args.options.config) :
       path.join(__dirname, 'karma.conf.js'),
     singleRun: !args.options.watch,
     autoWatch: args.options.watch
-  }, () => process.exit(0))
+  }, done)
   .start();
 };

@@ -32,7 +32,9 @@ let register = (command) => {
     });
 
   cliCommand
-    .action(function(args, done) {
+    .action(function(args) {
+      let done = () => process.exit(0);
+
       if (this.commandObject._events) {
         let options = Object
           .keys(this.commandObject._events)
@@ -47,7 +49,7 @@ let register = (command) => {
       process.env.NODE_ENV = command.environment || 'development';
 
       if (generator) {
-        env.run(`neo:${name}`, done)
+        env.run(`neo:${name}`, done);
       } else {
         require(dir)(args, done);
       }
