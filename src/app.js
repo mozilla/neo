@@ -1,16 +1,17 @@
+import ChartMonitor from 'redux-devtools-chart-monitor';
+import DockMonitor from 'redux-devtools-dock-monitor';
 import Immutable from 'immutable';
+import LogMonitor from 'redux-devtools-log-monitor';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SliderMonitor from 'redux-slider-monitor';
+import createLogger from 'redux-logger';
 import { LOCATION_CHANGE, syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { combineReducers } from 'redux-immutable';
-import { compose, createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { createDevTools, persistState } from 'redux-devtools';
-import ChartMonitor from 'redux-devtools-chart-monitor';
-import DockMonitor from 'redux-devtools-dock-monitor';
-import LogMonitor from 'redux-devtools-log-monitor';
-import SliderMonitor from 'redux-slider-monitor';
 
 const IS_PROD = process.env.NODE_ENV !== 'development';
 const NOOP = () => null;
@@ -27,23 +28,40 @@ let DevTools = IS_PROD ? NOOP : createDevTools(
   </DockMonitor>
 );
 
-let devtoolsStore = IS_PROD ? undefined : compose(
+const initialEnhancers = IS_PROD ? [] : [
   window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
   persistState(location.href.match(/[?&]debug_session=([^&]+)\b/))
-);
+];
 
-export default ({ reducers = {}, initialState = {}, routes = [], Layout = NOOP }) => {
+export default (options) => {
+  let {
+    initialState = {},
+    Layout = NOOP,
+    loggerOptions = {},
+    middleware = [],
+    reducers = {},
+    enhancers = {},
+    routes = []
+  } = options;
+
   const frozen = Immutable.fromJS(initialState);
+
   const routing = (state = frozen, action) => {
     return action.type === LOCATION_CHANGE ?
       state.merge({ locationBeforeTransitions: action.payload }) :
       state;
   };
 
+  const initialMiddleware = [createLogger(loggerOptions)];
+
   const store = createStore(
     combineReducers({ ...reducers, routing }),
     frozen,
-    devtoolsStore
+    compose(
+      applyMiddleware(...initialMiddleware, ...middleware),
+      ...initialEnhancers,
+      ...enhancers
+    )
   );
 
   const history = syncHistoryWithStore(browserHistory, store, {
