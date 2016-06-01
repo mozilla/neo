@@ -16,6 +16,13 @@ const SRC = path.dirname(SRC_FILE);
 const TESTS = path.join(CWD, 'tests');
 const USER_TEMPLATE = path.join(SRC, 'template.ejs');
 
+const NEO_VARIABLES = Object.keys(process.env)
+  .filter(x => x.toUpperCase().startsWith('NEO_'))
+  .reduce((r, x) => {
+      r['process.env.' + x] = JSON.stringify(process.env[x]);
+      return r;
+  }, {});
+
 let loader = name => `${name}?${qs.stringify(require(`.\/${name}`), {
   encode: false,
   arrayFormat: 'brackets'
@@ -28,9 +35,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new DefinePlugin({
+    new DefinePlugin(merge(NEO_VARIABLES, {
       'process.env.NODE_ENV': JSON.stringify(ENV)
-    }),
+    })),
     new HtmlPlugin(merge({
       template: exists(USER_TEMPLATE) ?
         USER_TEMPLATE :
