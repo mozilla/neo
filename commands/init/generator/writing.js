@@ -16,7 +16,10 @@ module.exports = function() {
   });
 
   copyFiles.forEach(file => {
-    this.fs.copy(this.templatePath(file), this.destinationPath(file));
+    this.fs.copy(
+      this.templatePath(file.startsWith('.') ? file.substr(1) : file),
+      this.destinationPath(file)
+    );
   });
 
   copyTemplates.forEach(template => {
