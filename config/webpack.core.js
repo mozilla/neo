@@ -29,7 +29,7 @@ let loader = name => `${name}?${qs.stringify(require(`.\/${name}`), {
 })}`;
 
 module.exports = {
-  entry: [SRC_FILE],
+  entry: ['babel-polyfill', SRC_FILE],
   output: {
     path: BUILD,
     filename: 'bundle.js'
