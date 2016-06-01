@@ -57,8 +57,8 @@ node_modules/.bin/neo init # and follow the prompts
 
 ## Contribute
 
-- Issue Tracker: [https://github.com/taskcluster/neo/issues](https://github.com/taskcluster/neo/issues)
-- Source Code: [https://github.com/taskcluster/neo](https://github.com/taskcluster/neo)
+- Issue Tracker: [https://github.com/mozilla/neo/issues](https://github.com/mozilla/neo/issues)
+- Source Code: [https://github.com/mozilla/neo](https://github.com/mozilla/neo)
 - Code of Conduct: [Adapted from Rust CoC](https://www.rust-lang.org/conduct.html)
 
 ## Support
@@ -69,4 +69,4 @@ We have an IRC channel `#tc-frontend` on [Mozilla IRC](https://wiki.mozilla.org/
 
 ## License
 
-This project is licensed under the [Mozilla Public License v2.0](https://github.com/taskcluster/neo/blob/master/LICENSE)
+This project is licensed under the [Mozilla Public License v2.0](https://github.com/mozilla/neo/blob/master/LICENSE)
