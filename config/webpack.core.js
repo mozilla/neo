@@ -8,6 +8,7 @@ const qs = require('qs');
 const CWD = process.cwd();
 const BUILD = path.join(CWD, 'build');
 const CWD_NODE_MODULES = path.join(CWD, 'node_modules');
+const ELM_EXT = /\.elm$/;
 const ENV = process.env.NODE_ENV;
 const NODE_MODULES = path.join(__dirname, '../node_modules');
 const PACKAGE = require(path.join(CWD, 'package.json'));
@@ -54,6 +55,7 @@ module.exports = {
     root: [NODE_MODULES, CWD_NODE_MODULES]
   },
   module: {
+    noParse: ELM_EXT,
     preLoaders: [
       {
         test: /\.jsx?$/,
@@ -76,11 +78,16 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [SRC, TESTS],
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components|elm-stuff)/,
         loaders: ['react-hot', loader('babel')]
       },
       {
-        test: /\.(woff|woff2)$/,
+        test: ELM_EXT,
+        exclude: /(node_modules|elm-stuff)/,
+        loader: 'elm-webpack'
+      },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url',
         query: {
           limit: 10000,
@@ -88,8 +95,35 @@ module.exports = {
         }
       },
       {
-        test: /\.(ttf|eot|svg)$/,
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url',
+        query: {
+          limit: '10000',
+          mimetype: 'application/octet-stream'
+        }
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url',
+        query: {
+          limit: '10000',
+          mimetype: 'application/svg+xml'
+        }
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url',
+        query: {
+          limit: 8192
+        }
+      },
+      {
+        test: /\.ico(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url'
       }
     ]
   }
