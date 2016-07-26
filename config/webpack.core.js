@@ -16,12 +16,12 @@ const SRC_FILE = path.join(CWD, PACKAGE.config.entry || 'src/entry.js');
 const SRC = path.dirname(SRC_FILE);
 const TESTS = path.join(CWD, 'tests');
 const USER_TEMPLATE = path.join(SRC, 'template.ejs');
-
-const NEO_VARIABLES = Object.keys(process.env)
-  .filter(x => x.toUpperCase().startsWith('NEO_'))
-  .reduce((r, x) => {
-      r['process.env.' + x] = JSON.stringify(process.env[x]);
-      return r;
+const NEO_VARIABLES = Object
+  .keys(process.env)
+  .filter(key => key.toUpperCase().startsWith('NEO_'))
+  .reduce((env, key) => {
+    env[`process.env.${key}`] = JSON.stringify(process.env[key]);
+    return env;
   }, {});
 
 let loader = name => `${name}?${qs.stringify(require(`.\/${name}`), {
@@ -33,7 +33,8 @@ module.exports = {
   entry: ['babel-polyfill', SRC_FILE],
   output: {
     path: BUILD,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new DefinePlugin(merge(NEO_VARIABLES, {
