@@ -7,7 +7,7 @@ Scaffold out a React-based front-end application with initial zero configuration
 - React, Redux, React Router
 - Webpack
 - ESLint, Babel, ES2015 + modules, Stage 0 preset
-- Tests and coverage with Karma, Mocha, Chai, Enzyme, and Chrome
+- Tests and coverage with Karma, Mocha, Chai, and Enzyme
 - Node.js v6
 - Bootstrap 4 and Sass
 - Travis CI
@@ -18,7 +18,7 @@ Scaffold out a React-based front-end application with initial zero configuration
 To view a sample application which contains the initial output of Neo after
 running `init`, check out [eliperelman/neo-example](https://github.com/eliperelman/neo-example).
 
-## Installation
+## Initialize empty project
 
 #### Global
 
@@ -48,7 +48,15 @@ node_modules/.bin/neo init # and follow the prompts
 → create README.md
 ```
 
-#### Workflow
+## Install in existing project
+
+```bash
+npm install --save mozilla-neo
+```
+
+Make changes to configuration by following the [scaffold init guide](https://github.com/mozilla/neo/tree/master/commands/init/templates#configuration).
+
+## Workflow
 
 - Add code to `src/` and tests to `tests/`.
 - Build and watch changes in `src/` with `npm start`.

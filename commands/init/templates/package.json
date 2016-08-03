@@ -24,16 +24,14 @@
   "dependencies": {
     "bootstrap": "4.0.0-alpha.2",
     "expose-loader": "0.7.1",
-    "ghooks": "1.2.1",
-    "jquery": "2.2.3",
-    "mozilla-neo": "1.0.2",
-    "react": "15.0.2",
-    "react-addons-test-utils": "15.0.2",
-    "react-dom": "15.0.2",
+    "ghooks": "1.3.2",
+    "mozilla-neo": "1.4.0",
+    "react": "15.3.0",
+    "react-addons-test-utils": "15.3.0",
+    "react-dom": "15.3.0",
     "react-redux": "4.4.5",
-    "react-router": "2.4.0",
-    "react-router-redux": "4.0.4",
-    "redux": "3.5.2",
-    "tether": "1.3.2"
+    "react-router": "2.6.1",
+    "react-router-redux": "4.0.5",
+    "redux": "3.5.2"
   }
 }
