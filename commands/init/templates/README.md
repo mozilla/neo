@@ -77,30 +77,30 @@ then modify the `npm start` script to use this custom configuration:
 
 For reference:
 
-- [`config/webpack.core`](https://github.com/taskcluster/neo/blob/master/config/webpack.core.js):
+- [`config/webpack.core`](https://github.com/mozilla/neo/blob/master/config/webpack.core.js):
 The webpack config base used by all other configurations
-- [`config/webpack.dev`](https://github.com/taskcluster/neo/blob/master/config/webpack.dev.js):
+- [`config/webpack.dev`](https://github.com/mozilla/neo/blob/master/config/webpack.dev.js):
 The webpack config used in the development process `npm start`
-- [`config/webpack.test`](https://github.com/taskcluster/neo/blob/master/config/webpack.test.js):
+- [`config/webpack.test`](https://github.com/mozilla/neo/blob/master/config/webpack.test.js):
 The webpack config used when running `npm test`. This config removes any plugins defined in `webpack.core`.
-- [`config/webpack.prod`](https://github.com/taskcluster/neo/blob/master/config/webpack.prod.js):
+- [`config/webpack.prod`](https://github.com/mozilla/neo/blob/master/config/webpack.prod.js):
 The webpack config used when running `npm run build`
 
 Additional configurations to modify or utilize:
 
-- [`config/babel`](https://github.com/taskcluster/neo/blob/master/config/babel.js): The Babel presets used internally by default
-- [`config/eslint`](https://github.com/taskcluster/neo/blob/master/config/eslint.js): ESLint default plugins, presets, and rules
-- [`config/karma`](https://github.com/taskcluster/neo/blob/master/config/karma.js): Karma testing and coverage settings
+- [`config/babel`](https://github.com/mozilla/neo/blob/master/config/babel.js): The Babel presets used internally by default
+- [`config/eslint`](https://github.com/mozilla/neo/blob/master/config/eslint.js): ESLint default plugins, presets, and rules
+- [`config/karma`](https://github.com/mozilla/neo/blob/master/config/karma.js): Karma testing and coverage settings
 
 ##### HTML template
 
-Neo uses its own [HTML template](https://github.com/taskcluster/neo/blob/master/src/template.ejs)
+Neo uses its own [HTML template](https://github.com/mozilla/neo/blob/master/src/template.ejs)
 to generate the initial markup for the static page it will render. To specify a
 custom template, create a `template.ejs` file in the `src` directory and Neo
 will pick it up automatically. In your `package.json` there is a `config.html`
 section where you can specify custom variables for your template. These values
 can be accessed via `htmlWebpackPlugin.options.custom_variable_name`. See the
-default [HTML template](https://github.com/taskcluster/neo/blob/master/src/template.ejs)
+default [HTML template](https://github.com/mozilla/neo/blob/master/src/template.ejs)
 for an demonstration of this usage.
 
 #### Transpiling

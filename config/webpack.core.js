@@ -55,13 +55,16 @@ module.exports = {
   resolveLoader: {
     root: [NODE_MODULES, CWD_NODE_MODULES]
   },
+  eslint: {
+    configFile: path.join(__dirname, 'eslint.js')
+  },
   module: {
     noParse: ELM_EXT,
     preLoaders: [
       {
         test: /\.jsx?$/,
         include: [SRC],
-        loader: loader('eslint')
+        loader: 'eslint'
       }
     ],
     loaders: [

@@ -61,6 +61,9 @@ node_modules/.bin/neo init # and follow the prompts
 - Source Code: [https://github.com/mozilla/neo](https://github.com/mozilla/neo)
 - Code of Conduct: [Adapted from Rust CoC](https://www.rust-lang.org/conduct.html)
 
+Note: There is currently a [bug in npm](https://github.com/npm/npm/issues/13385) from being able to run the `npm test`
+command in this repo in development. As a workaround, make sure you are using a npm 3.8.9 or less.
+
 ## Support
 
 If you are having issues, please let us know.
