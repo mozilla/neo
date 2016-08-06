@@ -9,20 +9,21 @@ const CWD = process.cwd();
 const BUILD = path.join(CWD, 'build');
 const CWD_NODE_MODULES = path.join(CWD, 'node_modules');
 const ELM_EXT = /\.elm$/;
-const ENV = process.env.NODE_ENV;
 const NODE_MODULES = path.join(__dirname, '../node_modules');
 const PACKAGE = require(path.join(CWD, 'package.json'));
-const SRC_FILE = path.join(CWD, PACKAGE.config.entry || 'src/entry.js');
+const SRC_FILE = path.join(CWD, PACKAGE.config.entry);
 const SRC = path.dirname(SRC_FILE);
 const TESTS = path.join(CWD, 'tests');
 const USER_TEMPLATE = path.join(SRC, 'template.ejs');
-const NEO_VARIABLES = Object
+const ENV = Object
   .keys(process.env)
   .filter(key => key.toUpperCase().startsWith('NEO_'))
   .reduce((env, key) => {
     env[`process.env.${key}`] = JSON.stringify(process.env[key]);
     return env;
-  }, {});
+  }, {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+  });
 
 let loader = name => `${name}?${qs.stringify(require(`.\/${name}`), {
   encode: false,
@@ -37,13 +38,11 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
-    new DefinePlugin(merge(NEO_VARIABLES, {
-      'process.env.NODE_ENV': JSON.stringify(ENV)
-    })),
+    new DefinePlugin(ENV),
     new HtmlPlugin(merge({
       template: exists(USER_TEMPLATE) ?
         USER_TEMPLATE :
-        path.join(__dirname, '../build/template.ejs'),
+        path.join(__dirname, '../src/template.ejs'),
       hash: true,
       xhtml: true
     }, PACKAGE.config.html || {}))
@@ -56,7 +55,8 @@ module.exports = {
     root: [NODE_MODULES, CWD_NODE_MODULES]
   },
   eslint: {
-    configFile: path.join(__dirname, 'eslint.js')
+    configFile: path.join(__dirname, 'eslint.core.js'),
+    useEslintrc: false
   },
   module: {
     noParse: ELM_EXT,

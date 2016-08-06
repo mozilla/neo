@@ -63,6 +63,13 @@ Make changes to configuration by following the [scaffold init guide](https://git
 - Lint and build the project with `npm run build`.
 - Run tests with `npm test`.
 
+## Changes
+
+### v2.0.0
+
+- Removed `config/eslint.js` in favor of `config/eslint.core.js` and `config/eslint.dev.js`
+- Moved `src/app.js` into project for easy customization and removal
+
 ## Contribute
 
 - Issue Tracker: [https://github.com/mozilla/neo/issues](https://github.com/mozilla/neo/issues)

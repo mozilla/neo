@@ -16,9 +16,7 @@ module.exports = merge(core, {
     new webpack.NoErrorsPlugin()
   ],
   eslint: {
-    rules: {
-      'no-console': 0
-    }
+    configFile: path.join(__dirname, 'eslint.dev.js')
   },
   devServer: {
     contentBase: path.join(process.cwd(), 'src'),
