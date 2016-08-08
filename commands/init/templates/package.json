@@ -5,7 +5,7 @@
   "description": "<%= data.description %>",
   "license": "MPL-2.0",
   "config": {
-    "entry": "src/entry.js",
+    "entry": "src/index.js",
     "ghooks": {
       "pre-commit": "npm test"
     },
@@ -25,6 +25,7 @@
     "bootstrap": "4.0.0-alpha.2",
     "expose-loader": "0.7.1",
     "ghooks": "1.3.2",
+    "immutable": "3.8.1",
     "mozilla-neo": "1.4.0",
     "react": "15.3.0",
     "react-addons-test-utils": "15.3.0",
@@ -32,6 +33,13 @@
     "react-redux": "4.4.5",
     "react-router": "2.6.1",
     "react-router-redux": "4.0.5",
-    "redux": "3.5.2"
+    "redux": "3.5.2",
+    "redux-devtools": "3.3.1",
+    "redux-devtools-chart-monitor": "1.4.2",
+    "redux-devtools-dock-monitor": "1.1.1",
+    "redux-devtools-log-monitor": "1.0.11",
+    "redux-immutable": "3.0.6",
+    "redux-logger": "2.6.1",
+    "redux-slider-monitor": "1.0.7"
   }
 }

@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   failOnWarning: false,
   failOnError: true,
   plugins: [
@@ -16,7 +17,10 @@ module.exports = {
     'plugin:react/recommended'
   ],
   env: {
-    browser: true
+    browser: true,
+    commonjs: true,
+    es6: true,
+    node: true
   },
   parser: 'babel-eslint',
   parserOptions: {
@@ -24,6 +28,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+      generators: true,
       impliedStrict: true,
       experimentalObjectRestSpread: true
     }

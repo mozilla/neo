@@ -89,7 +89,8 @@ The webpack config used when running `npm run build`
 Additional configurations to modify or utilize:
 
 - [`config/babel`](https://github.com/mozilla/neo/blob/master/config/babel.js): The Babel presets used internally by default
-- [`config/eslint`](https://github.com/mozilla/neo/blob/master/config/eslint.js): ESLint default plugins, presets, and rules
+- [`config/eslint.core`](https://github.com/mozilla/neo/blob/master/config/eslint.core.js): ESLint default plugins, presets, and rules
+- [`config/eslint.dev`](https://github.com/mozilla/neo/blob/master/config/eslint.dev.js): ESLint development rules overrides
 - [`config/karma`](https://github.com/mozilla/neo/blob/master/config/karma.js): Karma testing and coverage settings
 
 ##### HTML template
@@ -179,6 +180,18 @@ module.exports = build;
     "build": "neo build --config webpack.custom.js"
   }
 }
+```
+
+It is recommended if you only have minor changes to the ESLint configuration to just modify the desired config in your
+custom ESLint configuration:
+
+```js
+// .eslintrc.js
+let core = require('mozilla-neo/config/eslint.core');
+
+core.rules.semi = [2, 'never'];
+
+module.exports = core;
 ```
 
 #### Testing

@@ -1,4 +1,4 @@
-import App from 'mozilla-neo';
+import App from './app';
 import routes from './routes';
 import Layout from './layout';
 
@@ -10,4 +10,4 @@ export const initialState = {
   title: '<%= data.appTitle %>'
 };
 
-export default App({ reducers, initialState, Layout, routes });
+App({ reducers, initialState, Layout, routes }).render();
