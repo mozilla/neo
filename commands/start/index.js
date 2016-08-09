@@ -9,8 +9,11 @@ module.exports = (args, done) => {
     require(path.resolve(process.cwd(), args.options.config)) :
     devConfig;
 
+  const schema = config.devServer.https ? 'https' : 'http';
+  const host = config.devServer.host || 'localhost';
+
   config.entry.unshift(
-    `webpack-dev-server/client?http://localhost:${port}`,
+    `webpack-dev-server/client?${schema}://${host}:${port}`,
     'webpack/hot/dev-server'
   );
 
@@ -18,5 +21,5 @@ module.exports = (args, done) => {
   let server = new DevServer(compiler, config.devServer);
 
   process.on('SIGINT', done);
-  server.listen(port, 'localhost', () => console.log(`Listening on http://localhost:${port}`));
+  server.listen(port, host, () => console.log(`Listening on ${schema}://${host}:${port}`));
 };
