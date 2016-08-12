@@ -1,4 +1,5 @@
 const path = require('path');
+const { version } = require('../../../package.json');
 
 module.exports = function() {
   let done = this.async();
@@ -47,6 +48,7 @@ module.exports = function() {
       .prompt(questions)
       .then(answers => {
         this.data = answers;
+        this.data.version = version;
         done();
       });
   });

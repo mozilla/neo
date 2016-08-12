@@ -1,6 +1,6 @@
 # Neo
 
-Scaffold out a React-based front-end application with initial zero configuration
+Scaffold out a React-based front-end application with zero initial configuration
 
 ## Features
 
@@ -8,10 +8,10 @@ Scaffold out a React-based front-end application with initial zero configuration
 - Webpack
 - ESLint, Babel, ES2015 + modules, Stage 0 preset
 - Tests and coverage with Karma, Mocha, Chai, and Enzyme
+- Immutable
 - Node.js v6
 - Bootstrap 4 and Sass
 - Travis CI
-- Immutable
 
 ## Sample App
 
