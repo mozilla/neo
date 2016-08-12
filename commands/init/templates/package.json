@@ -21,12 +21,13 @@
     "test": "neo test"
   },
   "keywords": [],
+  "devDependencies": {
+    "mozilla-neo": "<%= data.version %>"
+  },
   "dependencies": {
     "bootstrap": "4.0.0-alpha.2",
-    "expose-loader": "0.7.1",
     "ghooks": "1.3.2",
     "immutable": "3.8.1",
-    "mozilla-neo": "1.4.0",
     "react": "15.3.0",
     "react-addons-test-utils": "15.3.0",
     "react-dom": "15.3.0",

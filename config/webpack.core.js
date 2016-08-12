@@ -8,7 +8,6 @@ const qs = require('qs');
 const CWD = process.cwd();
 const BUILD = path.join(CWD, 'build');
 const CWD_NODE_MODULES = path.join(CWD, 'node_modules');
-const ELM_EXT = /\.elm$/;
 const NODE_MODULES = path.join(__dirname, '../node_modules');
 const PACKAGE = require(path.join(CWD, 'package.json'));
 const SRC_FILE = path.join(CWD, PACKAGE.config.entry);
@@ -59,7 +58,6 @@ module.exports = {
     useEslintrc: false
   },
   module: {
-    noParse: ELM_EXT,
     preLoaders: [
       {
         test: /\.jsx?$/,
@@ -82,13 +80,8 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [SRC, TESTS],
-        exclude: /(node_modules|bower_components|elm-stuff)/,
+        exclude: /(node_modules|bower_components)/,
         loaders: ['react-hot', loader('babel')]
-      },
-      {
-        test: ELM_EXT,
-        exclude: /(node_modules|elm-stuff)/,
-        loader: 'elm-webpack'
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
