@@ -1,6 +1,6 @@
 {
   "name": "mozilla-neo",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -10,7 +10,8 @@
     "bin",
     "build",
     "commands",
-    "config"
+    "config",
+    "src"
   ],
   "bin": {
     "neo": "./bin/neo"
