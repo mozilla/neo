@@ -78,6 +78,10 @@ module.exports = {
         loaders: ['style', 'css', 'sass']
       },
       {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
         test: /\.jsx?$/,
         include: [SRC, TESTS],
         exclude: /(node_modules|bower_components)/,
