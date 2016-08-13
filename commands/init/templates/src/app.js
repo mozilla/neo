@@ -29,7 +29,7 @@ let DevTools = IS_PROD ? NOOP : createDevTools(
 );
 
 const initialEnhancers = IS_PROD ? [] : [
-  window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
+  DevTools.instrument(),
   persistState(location.href.match(/[?&]debug_session=([^&]+)\b/))
 ];
 
