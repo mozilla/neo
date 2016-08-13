@@ -2,7 +2,7 @@
   <img src="neo.png" height="96" />
 </p>
 
-<p align="center">Scaffold out a React-based front-end application with zero initial configuration</p>
+<p align="center">Create and build React web applications with zero initial configuration and minimal fuss.</p>
 
 ---
 
