@@ -1,6 +1,10 @@
-# Neo
+<p align="center">
+  <img src="neo.png" height="96" />
+</p>
 
-Scaffold out a React-based front-end application with zero initial configuration
+<p align="center">Scaffold out a React-based front-end application with zero initial configuration</p>
+
+---
 
 ## Features
 
