@@ -69,6 +69,13 @@ Make changes to configuration by following the [scaffold init guide](https://git
 
 ## Changes
 
+
+### v2.1.0
+
+- Removed Elm from being "baked in"
+- Added support for web workers via worker-loader
+- Updated a few dependencies
+
 ### v2.0.0
 
 - Removed `config/eslint.js` in favor of `config/eslint.core.js` and `config/eslint.dev.js`
