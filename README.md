@@ -6,6 +6,14 @@
 
 ---
 
+Neo bakes in the best-of-the-bunch configurations and setup to make developing React-based sites quicker and easier.
+It is not just another React boilerplate, rather Neo gives you a single development dependency enabling you to develop,
+test, and build which let's you hit the ground running.
+
+[Neo: Introduction on Medium](https://blog.eliperelman.com/neo-8bf3d7325f7)
+
+---
+
 ## Features
 
 - React, Redux, React Router
@@ -55,7 +63,7 @@ node_modules/.bin/neo init # and follow the prompts
 ## Install in existing project
 
 ```bash
-npm install --save mozilla-neo
+npm install --save-dev mozilla-neo
 ```
 
 Make changes to configuration by following the [scaffold init guide](https://github.com/mozilla/neo/tree/master/commands/init/templates#configuration).
@@ -69,6 +77,9 @@ Make changes to configuration by following the [scaffold init guide](https://git
 
 ## Changes
 
+### v2.2.0
+
+- Added support for JSON loading
 
 ### v2.1.0
 
