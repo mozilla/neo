@@ -1,5 +1,7 @@
+'use strict';
+
 const path = require('path');
-const { Server } = require('karma');
+const Server = require('karma').Server;
 
 module.exports = (args, done) => {
   new Server({

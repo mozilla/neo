@@ -1,8 +1,8 @@
 {
   "name": "mozilla-neo",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=4.4.0"
   },
   "description": "React Redux Webpack starter for Mozilla projects",
   "repository": "mozilla/neo",

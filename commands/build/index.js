@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const prodConfig = require('../../config/webpack.prod');
 const webpack = require('webpack');

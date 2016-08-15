@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
+'use strict';
+
 const path = require('path');
 const Vorpal = require('vorpal');
 const yeoman = require('yeoman-environment');
-const { commands } = require('../package.json');
+const commands = require('../package.json').commands;
 
-let cli = new Vorpal();
-let env = yeoman.createEnv();
+const cli = new Vorpal();
+const env = yeoman.createEnv();
 let register = (command) => {
-  let {
-    name,
-    generator,
-    options = []
-  } = command;
-  let dir = path.resolve(__dirname, `../commands/${name}`);
+  const name = command.name;
+  const generator = command.generator;
+  const options = command.options || [];
+  const dir = path.resolve(__dirname, `../commands/${name}`);
 
   if (generator) {
     env.register(require.resolve(dir), `neo:${name}`);
@@ -25,7 +25,7 @@ let register = (command) => {
     .keys(options)
     .map(option => {
       if (Array.isArray(options[option])) {
-        cliCommand.option(option, ...options[option]);
+        cliCommand.option.apply(cliCommand, [option].concat(options[option]));
       } else {
         cliCommand.option(option, options[option]);
       }
@@ -33,10 +33,10 @@ let register = (command) => {
 
   cliCommand
     .action(function(args) {
-      let done = () => process.exit(0);
+      const done = () => process.exit(0);
 
       if (this.commandObject._events) {
-        let options = Object
+        const options = Object
           .keys(this.commandObject._events)
           .reduce((base, key) => {
             base[key] = this.commandObject[key];
@@ -62,4 +62,4 @@ cli
   .find('exit')
   .hidden();
 
-cli.parse(process.argv[2] ? process.argv : [...process.argv, 'help']);
+cli.parse.apply(cli, process.argv[2] ? [process.argv] : process.argv.concat(['help']));

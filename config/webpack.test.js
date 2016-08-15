@@ -1,3 +1,5 @@
+'use strict';
+
 const core = require('./webpack.core');
 const merge = require('webpack-merge');
 

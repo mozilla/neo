@@ -1,17 +1,19 @@
+'use strict';
+
 const path = require('path');
-const { version } = require('../../../package.json');
+const version = require('../../../package.json').version;
 
 module.exports = function() {
-  let done = this.async();
-  let name = '';
-  let command = this.spawnCommand('bash', [
+  const done = this.async();
+  const command = this.spawnCommand('bash', [
     '-c',
     'echo -n "$(npm config get init-author-name)"'
   ], { stdio: 'pipe' });
+  let name = '';
 
   command.stdout.on('data', data => name += data);
   command.on('close', () => {
-    let questions = [
+    const questions = [
       {
         name: 'appTitle',
         message: 'What is the title of your app?',

@@ -1,11 +1,13 @@
+'use strict';
+
 module.exports = function() {
-  let copyDirs = ['src', 'tests'];
-  let copyFiles = [
+  const copyDirs = ['src', 'tests'];
+  const copyFiles = [
     '.gitignore',
     '.travis.yml',
     'LICENSE'
   ];
-  let copyTemplates = [
+  const copyTemplates = [
     'package.json',
     'README.md',
     'src/index.js'
