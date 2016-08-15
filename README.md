@@ -12,6 +12,8 @@ test, and build which let's you hit the ground running.
 
 [Neo: Introduction on Medium](https://blog.eliperelman.com/neo-8bf3d7325f7)
 
+[![Neo: Slack](https://neo-slack.herokuapp.com/badge.svg)](https://neo-slack.herokuapp.com/)
+
 ---
 
 ## Features
@@ -104,7 +106,10 @@ command in this repo in development. As a workaround, make sure you are using a 
 ## Support
 
 If you are having issues, please let us know.
-We have an IRC channel `#tc-frontend` on [Mozilla IRC](https://wiki.mozilla.org/IRC)
+
+Join our Slack community at [https://neo-slack.herokuapp.com/](https://neo-slack.herokuapp.com/).
+
+We also have an IRC channel `#neo` on [Mozilla IRC](https://wiki.mozilla.org/IRC).
 
 
 ## License
