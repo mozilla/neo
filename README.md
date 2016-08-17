@@ -23,9 +23,12 @@ test, and build which let's you hit the ground running.
 - ESLint, Babel, ES2015 + modules, Stage 0 preset
 - Tests and coverage with Karma, Mocha, Chai, and Enzyme
 - Immutable
-- Node.js v6
 - Bootstrap 4 and Sass
 - Travis CI
+
+## Requirements
+
+- Node.js v4+ and npm
 
 ## Sample App
 
@@ -78,6 +81,10 @@ Make changes to configuration by following the [scaffold init guide](https://git
 - Run tests with `npm test`.
 
 ## Changes
+
+### v2.3.0
+
+- Added support for building projects using Node.js v4+
 
 ### v2.2.0
 
