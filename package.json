@@ -1,10 +1,10 @@
 {
   "name": "mozilla-neo",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "engines": {
     "node": ">=4.4.0"
   },
-  "description": "React Redux Webpack starter for Mozilla projects",
+  "description": "Create and build React web applications with zero initial configuration and minimal fuss",
   "repository": "mozilla/neo",
   "files": [
     "bin",
