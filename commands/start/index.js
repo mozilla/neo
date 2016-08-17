@@ -1,11 +1,13 @@
+'use strict';
+
 const devConfig = require('../../config/webpack.dev');
 const DevServer = require('webpack-dev-server');
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports = (args, done) => {
-  let port = args.options.port;
-  let config = args.options.config ?
+  const port = args.options.port;
+  const config = args.options.config ?
     require(path.resolve(process.cwd(), args.options.config)) :
     devConfig;
 
@@ -17,8 +19,8 @@ module.exports = (args, done) => {
     'webpack/hot/dev-server'
   );
 
-  let compiler = webpack(config);
-  let server = new DevServer(compiler, config.devServer);
+  const compiler = webpack(config);
+  const server = new DevServer(compiler, config.devServer);
 
   process.on('SIGINT', done);
   server.listen(port, host, () => console.log(`Listening on ${schema}://${host}:${port}`));

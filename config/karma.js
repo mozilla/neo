@@ -1,3 +1,5 @@
+'use strict';
+
 const testConfig = require('./webpack.test');
 
 const TESTS = 'tests/*_test.js';

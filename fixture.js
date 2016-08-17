@@ -14,8 +14,8 @@ helpers
   })
   .toPromise()
   .then(dir => {
-    let pkgPath = path.join(dir, 'package.json');
-    let pkg = require(pkgPath);
+    const pkgPath = path.join(dir, 'package.json');
+    const pkg = require(pkgPath);
 
     pkg.dependencies['mozilla-neo'] = `file:${__dirname}`;
     fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));

@@ -1,3 +1,5 @@
+'use strict';
+
 const core = require('./eslint.core');
 const merge = require('deepmerge');
 

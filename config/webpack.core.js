@@ -1,4 +1,6 @@
-const { DefinePlugin } = require('webpack');
+'use strict';
+
+const DefinePlugin = require('webpack').DefinePlugin;
 const exists = require('exists-file').sync;
 const HtmlPlugin = require('html-webpack-plugin');
 const merge = require('deepmerge');
@@ -24,7 +26,7 @@ const ENV = Object
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   });
 
-let loader = name => `${name}?${qs.stringify(require(`.\/${name}`), {
+const loader = name => `${name}?${qs.stringify(require(`.\/${name}`), {
   encode: false,
   arrayFormat: 'brackets'
 })}`;

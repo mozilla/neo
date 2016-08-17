@@ -1,4 +1,6 @@
-const { Base } = require('yeoman-generator');
+'use strict';
+
+const Base = require('yeoman-generator').Base;
 const initializing = require('./generator/initializing');
 const install = require('./generator/install');
 const prompting = require('./generator/prompting');
