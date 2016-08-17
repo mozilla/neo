@@ -23,5 +23,5 @@ module.exports = (args, done) => {
   const server = new DevServer(compiler, config.devServer);
 
   process.on('SIGINT', done);
-  server.listen(port, host, () => console.log(`Listening on ${schema}://${host}:${port}`));
+  server.listen(port, host, () => console.log(`{green-fg}Dev server started on:{/} ${schema}://${host}:${port}`));
 };
