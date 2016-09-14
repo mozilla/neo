@@ -81,8 +81,6 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        include: [SRC, TESTS],
-        exclude: /(node_modules|bower_components)/,
         loader: 'json'
       },
       {
