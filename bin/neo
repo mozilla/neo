@@ -33,7 +33,7 @@ let register = (command) => {
 
   cliCommand
     .action(function(args) {
-      const done = () => process.exit(0);
+      const done = (exitCode) => process.exit(exitCode || 0);
 
       if (this.commandObject._events) {
         const options = Object
