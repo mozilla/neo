@@ -16,12 +16,6 @@ module.exports = merge(core, {
     'react/lib/ReactContext': 'window'
   },
   module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json'
-      }
-    ],
     preLoaders: [
       {
         test: /\.js$/,
