@@ -111,7 +111,7 @@ module.exports = {
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url',
+        loader: 'svg-url',
         query: {
           limit: '10000',
           mimetype: 'application/svg+xml'
