@@ -82,6 +82,10 @@ Make changes to configuration by following the [scaffold init guide](https://git
 
 ## Changes
 
+### v2.7.0
+
+- Support deeply-nested test files in `tests/`
+
 ### v2.6.0
 
 - Support importing modules relative to `src/`
