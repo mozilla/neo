@@ -49,7 +49,7 @@ module.exports = {
     }, PACKAGE.config.html || {}))
   ],
   resolve: {
-    root: [NODE_MODULES, CWD_NODE_MODULES],
+    root: [SRC, NODE_MODULES, CWD_NODE_MODULES],
     extensions: ['', '.js', '.jsx', '.json']
   },
   resolveLoader: {
