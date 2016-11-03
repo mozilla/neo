@@ -82,6 +82,11 @@ Make changes to configuration by following the [scaffold init guide](https://git
 
 ## Changes
 
+### v2.6.0
+
+- Support importing modules relative to `src/`
+- Use `svg-url-loader` for SVGs
+
 ### v2.3.0
 
 - Added support for building projects using Node.js v4+
