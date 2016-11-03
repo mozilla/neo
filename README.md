@@ -80,6 +80,46 @@ Make changes to configuration by following the [scaffold init guide](https://git
 - Lint and build the project with `npm run build`.
 - Run tests with `npm test`.
 
+## Support Flow checker
+
+[Flow](https://flowtype.org/) is an sophisticated JavaScript static type checker made by Facebook.
+It works by adding type annotation to plain JavaScript code and is easy to integrate:
+
+1. Run: `npm install --save-dev flow-bin flow-status-webpack-plugin`
+1. Initialize flow: `node_modules/.bin/flow init`
+1. Edit newly created `.flowconfig` file:
+
+        [ignore]
+        .*/node_modules/.*
+
+        [include]
+
+        [libs]
+
+        [options]
+
+1. create `dev.config.js` (in the project root - just next to `package.json`)
+
+        const dev = require('mozilla-neo/config/webpack.dev');
+        const FlowStatusPlugin = require('flow-status-webpack-plugin/index');
+
+        dev.plugins.push(new FlowStatusPlugin({
+        	binaryPath: 'node_modules/.bin/flow',
+        	onError: console.log,
+        	onSuccess: console.log  // remove this to not display success messages
+        }));
+
+        module.exports = dev
+
+1. Epdate `package.json` by add `--config dev.config.js` argument to neo start:
+
+        "scripts": {
+          "build": "neo build",
+          "start": "neo start --port 4000 --config dev.config.js",
+          "test": "neo test"
+        },
+
+
 ## Changes
 
 ### v2.7.0
