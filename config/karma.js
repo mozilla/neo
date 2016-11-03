@@ -2,7 +2,7 @@
 
 const testConfig = require('./webpack.test');
 
-const TESTS = 'tests/*_test.js';
+const TESTS = 'tests/**/*_test.js';
 
 module.exports = {
   basePath: process.cwd(),
