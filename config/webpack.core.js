@@ -63,7 +63,7 @@ module.exports = {
     preLoaders: [
       {
         test: /\.jsx?$/,
-        include: [SRC],
+        include: [SRC, TESTS],
         loader: 'eslint'
       }
     ],
