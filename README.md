@@ -1,3 +1,13 @@
+### DEPRECATED!
+
+Please see Neutrino for an alternative!
+
+https://neutrino.js.org
+
+---
+
+
+
 <p align="center">
   <img src="neo.png" height="96" />
 </p>
@@ -11,8 +21,6 @@ It is not just another React boilerplate, rather Neo gives you a single developm
 test, and build which let's you hit the ground running.
 
 [Neo: Introduction on Medium](https://blog.eliperelman.com/neo-8bf3d7325f7)
-
-[![Neo: Slack](https://neo-slack.herokuapp.com/badge.svg)](https://neo-slack.herokuapp.com/)
 
 ---
 
